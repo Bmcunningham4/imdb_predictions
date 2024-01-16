@@ -2,6 +2,7 @@ import pandas as pd
 
 df = pd.read_csv("imdb_ratings.csv")
 
+#! Step 1) Pre-processing - get my df ready bby (then worry about k-nearest neighbours crap!)
 #? Removing columns
 ratings_df = df.drop(["Const", "URL", "Release Date", "Directors", "Title"], axis = 1)
 """print(ratings_df.head())
@@ -17,9 +18,25 @@ print(ratings_df.head())
 
 #? Fixing Genres
 # print(ratings_df["Title Type"].value_counts(), '\n')
-
-print(ratings_df.Genres[1070])
 print(ratings_df.Genres.value_counts())
+
+genres_df = df['Genres'].str.get_dummies(sep=', ')
+print(genres_df) #* 24 diff categories!!
+
+genre_counts = genres_df.iloc[:, 1:].sum()
+genre_counts_sorted = genre_counts.sort_values(ascending=False)
+print(genre_counts_sorted)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

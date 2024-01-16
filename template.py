@@ -4,6 +4,16 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler
 
+#todo: Other ideas
+"""
+Clustering? ..
+Linear Regression
+Decision Trees
+Random Forest
+Support Vector Machines (SVM)
+Gradient Boosting
+"""
+
 #! Created a template for how I can carry out K-Nearest neighbours analysis
 # Load your IMDb ratings dataset
 df = pd.read_csv('your_ratings_dataset.csv')
