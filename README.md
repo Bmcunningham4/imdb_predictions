@@ -10,6 +10,13 @@ Ideas
 - Have seperate files with diff bits of analysis briefly like my avg ratings over diff years etc, most ratings in a year etc.. avg ratings, range for each genres.. 
 - Predictions for diff times of classifications eg. Tree, classifiers, weighted K-nearest neighbors!
 
+Clustering? ..
+PCA? 
+Linear Regression
+Decision Trees
+Random Forest
+Support Vector Machines (SVM)
+Gradient Boosting
 
 
 
