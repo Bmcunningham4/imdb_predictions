@@ -59,3 +59,4 @@ print(model.intercept_)
 # plt.scatter(ratings_df[['Runtime (mins)']], ratings_df["Your Rating"], alpha = 0.4)  #! This gives me important info that min-max normalization won't be good due to massive outliers (also weak correlation)
 # plt.show()
 # plt.close()
+
