@@ -7,6 +7,7 @@ import pandas as pd
 df = pd.read_csv("imdb_ratings.csv")
 ratings_df = df.drop(["Const", "URL", "Release Date", "Directors", "Title"], axis = 1)
 
+#? converting out of objec type!
 ratings_df[["Genres", "Title Type"]] = ratings_df[["Genres", "Title Type"]].astype("category")
 ratings_df["Date Rated"] = pd.to_datetime(ratings_df["Date Rated"], format="%d/%m/%Y", errors="coerce")
 min_date = ratings_df["Date Rated"].min()
