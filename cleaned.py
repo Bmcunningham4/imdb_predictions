@@ -1,9 +1,7 @@
 
 import pandas as pd
 
-# from clean import ratings_df, genres_df ------ This was printing all the garbage on that file..
-
-#! Simplified shit (With clean data) import wasn't clean
+#! Cleaning, My Ratings CSV file
 df = pd.read_csv("imdb_ratings.csv")
 ratings_df = df.drop(["Const", "URL", "Release Date", "Directors", "Title"], axis = 1)
 
@@ -21,6 +19,55 @@ title_type_df = pd.get_dummies(ratings_df["Title Type"], dtype=int)
 ratings_df = pd.concat([ratings_df, genres_df, title_type_df], axis=1)
 ratings_df = ratings_df.drop(['Genres', 'Title Type'], axis=1)
 # print(ratings_df.head())
+
+#! Cleaning My Watchlist CSV file!
+df2 = pd.read_csv("watchlist.csv")
+watchlist_df = df2.drop(["DateAdded", "Type"], axis=1)
+movie_names = watchlist_df.Title
+
+Runtimes = [85, 113, 85, 108, 124, 101, 148, 95, 78, 108, 151, 128, 98, 104, 106, 129, 107, 50, 112, 133, 139, 125, 123, 125, 115]
+watchlist_df["Runtimes"] = Runtimes
+# print(watchlist_df.head()) ------ All Clear...
+
+
+#todo: List of things I want to explore in each df, Don't do this for too long (Just first) probs..
+#* Get into a .Jupyter file and start this!!
+"""
+____ Var vs My Ratings:
+Runtime, 
+IMDb Rating, 
+Year, 
+Num votes, 
+Day Rated, 
+Genre, 
+Title Type!
+"""
+
+
+
+
+
+#* This stuff is not relevant here but noting for later..
+#? Feature selection methods: Filter, wrapper and embedded
+"""
+Filter 
+- Checks correlation basically before using ...of each variable 
+- Doesn't work well for multivariate relationships since it measures individually
+Yes I should use!
+
+Wrapper:
+- They by using a search algorithm to find which combination of features can optimize performance of a given model..
+- eg. fwd/ backward bidirectional crap and recursive ..
+Yes I should try with top 5!
+
+Embedded:
+-Similar to wrapper but don't quite get If I figure out can use..
+
+
+
+
+"""
+
 
 
 
