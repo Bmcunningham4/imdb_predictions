@@ -3,7 +3,7 @@ import pandas as pd
 
 #! Cleaning, My Ratings CSV file
 df = pd.read_csv("imdb_ratings.csv")
-ratings_df = df.drop(["Const", "URL", "Release Date", "Directors", "Title"], axis = 1)
+ratings_df = df.drop(["Const", "URL", "Release Date", "Directors"], axis = 1) #todo: I don't necessarily need to remove title, cause it'll make it harder knowing which movie I'm talking about!
 
 #? converting out of objec type!
 ratings_df[["Genres", "Title Type"]] = ratings_df[["Genres", "Title Type"]].astype("category")
@@ -19,6 +19,10 @@ title_type_df = pd.get_dummies(ratings_df["Title Type"], dtype=int)
 ratings_df = pd.concat([ratings_df, genres_df, title_type_df], axis=1)
 ratings_df = ratings_df.drop(['Genres', 'Title Type'], axis=1)
 # print(ratings_df.head())
+
+#todo: Remvoing rows that have Nan values (just 3)
+ratings_df.dropna(inplace=True)
+# print(len(ratings_df)) --- Tick come and change this later !!
 
 #! Cleaning My Watchlist CSV file!
 df2 = pd.read_csv("watchlist.csv")
