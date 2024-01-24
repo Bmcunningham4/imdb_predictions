@@ -2,7 +2,7 @@
 import pandas as pd
 
 #! Cleaning, My Ratings CSV file
-df = pd.read_csv("imdb_ratings.csv")
+df = pd.read_csv("Data/imdb_ratings.csv")
 ratings_df = df.drop(["Const", "URL", "Release Date", "Directors"], axis = 1) #todo: I don't necessarily need to remove title, cause it'll make it harder knowing which movie I'm talking about!
 
 #? converting out of object type!
@@ -20,36 +20,55 @@ ratings_df = pd.concat([ratings_df, genres_df, title_type_df], axis=1)
 ratings_df = ratings_df.drop(['Genres', 'Title Type'], axis=1)
 # print(ratings_df.head())
 
-#todo: Remvoing rows that have Nan values (just 3)
+#? Removing 3 empty rows (with no runtimes)
 ratings_df.dropna(inplace=True)
-# print(len(ratings_df)) --- Tick come and change this later !!
+# print(len(ratings_df)) 
+
+
 
 #! Cleaning My Watchlist CSV file!
-df2 = pd.read_csv("watchlist.csv")
+df2 = pd.read_csv("Data/watchlist.csv")
 watchlist_df = df2.drop(["DateAdded", "Type"], axis=1)
 movie_names = watchlist_df.Title
 
 Runtimes = [85, 113, 85, 108, 124, 101, 148, 95, 78, 108, 151, 128, 98, 104, 106, 129, 107, 50, 112, 133, 139, 125, 123, 125, 115]
 watchlist_df["Runtimes"] = Runtimes
-# print(watchlist_df.head()) ------ All Clear...
-
-
-#todo: List of things I want to explore in each df, Don't do this for too long (Just first) probs..
-#* Get into a .Jupyter file and start this!!
-"""
-____ Var vs My Ratings:
-Runtime, 
-IMDb Rating, 
-Year, 
-Num votes, 
-Day Rated, 
-Genre, 
-Title Type!
-"""
+# print(watchlist_df.head()) -
 
 
 
 
+#! Train-test split
+#? 1) Ideally would split data like this, since some genres might help the ML models
+X = ratings_df[['IMDb Rating', 'Runtime (mins)', 'Year', 'Num Votes', 'Day_Rated',
+                'Action', 'Adventure', 'Animation', 'Biography', 'Comedy',
+                'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'Game-Show',
+                'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Reality-TV',
+                'Romance', 'Sci-Fi', 'Short', 'Sport', 'Thriller', 'War', 'Western',
+                'movie', 'tvMiniSeries', 'tvMovie', 'tvSeries', 'video', 'videoGame']]
+y = ratings_df['Your Rating']
+
+#? 2) Will have to chose option 2 since the watchlist df that I'm going to making predictions on only includes these features!
+X = ratings_df[['IMDb Rating', 'Runtime (mins)', 'Year', 'Num Votes', 'Day_Rated',]]
+y = ratings_df['Your Rating']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Changing runtimes (from exploratory_analysis.ipynb)
+sample_numbers = [4, 10, 58, 247, 828, 883, 932, 980, 983, 1013, 1019, 1020, 1022, 1039, 1052]
+correct_runtimes = [54, 42, 23, 49, 23, 44, 46, 42, 38, 44, 34, 28, 32, 56, 41] # Googled These 
+ratings_df.loc[sample_numbers, "Runtime (mins)"] = correct_runtimes
 
 #* This stuff is not relevant here but noting for later..
 #? Feature selection methods: Filter, wrapper and embedded
