@@ -32,8 +32,10 @@ watchlist_df = df2.drop(["DateAdded", "Type"], axis=1)
 movie_names = watchlist_df.Title
 
 Runtimes = [85, 113, 85, 108, 124, 101, 148, 95, 78, 108, 151, 128, 98, 104, 106, 129, 107, 50, 112, 133, 139, 125, 123, 125, 115]
-watchlist_df["Runtimes"] = Runtimes
-# print(watchlist_df.head()) -
+watchlist_df["Runtime (mins)"] = Runtimes
+
+#? Creating new column Day_Rated and setting it to 3487, which would be the present day of 26/1/24 (To allow the ML model to use this feature for predictions)
+watchlist_df["Day_Rated"] = 3487
 
 
 
