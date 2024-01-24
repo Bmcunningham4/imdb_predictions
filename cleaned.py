@@ -5,7 +5,7 @@ import pandas as pd
 df = pd.read_csv("imdb_ratings.csv")
 ratings_df = df.drop(["Const", "URL", "Release Date", "Directors"], axis = 1) #todo: I don't necessarily need to remove title, cause it'll make it harder knowing which movie I'm talking about!
 
-#? converting out of objec type!
+#? converting out of object type!
 ratings_df[["Genres", "Title Type"]] = ratings_df[["Genres", "Title Type"]].astype("category")
 ratings_df["Date Rated"] = pd.to_datetime(ratings_df["Date Rated"], format="%d/%m/%Y", errors="coerce")
 min_date = ratings_df["Date Rated"].min()
