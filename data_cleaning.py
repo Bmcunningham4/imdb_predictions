@@ -66,11 +66,29 @@ y = ratings_df['Your Rating']
 
 
 
-
+#? This code is used and explained in the notebook files
 # Changing runtimes (from exploratory_analysis.ipynb)
 sample_numbers = [4, 10, 58, 247, 828, 883, 932, 980, 983, 1013, 1019, 1020, 1022, 1039, 1052]
 correct_runtimes = [54, 42, 23, 49, 23, 44, 46, 42, 38, 44, 34, 28, 32, 56, 41] # Googled These 
 ratings_df.loc[sample_numbers, "Runtime (mins)"] = correct_runtimes
+
+def valid_int(prompt, min_val, max_val):
+    while True:
+        try:
+            user_input = float(input(prompt))
+            if min_val <= user_input <= max_val:
+                return user_input
+            else:
+                print(f"Please enter a number between {min_val} and {max_val}.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+
+
+
+
+
+
 
 #* This stuff is not relevant here but noting for later..
 #? Feature selection methods: Filter, wrapper and embedded
