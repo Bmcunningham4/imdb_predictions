@@ -42,13 +42,13 @@ watchlist_df["Day_Rated"] = 3487
 
 #! Train-test split
 #? 1) Ideally would split data like this, since some genres might help the ML models
-X = ratings_df[['IMDb Rating', 'Runtime (mins)', 'Year', 'Num Votes', 'Day_Rated',
+X_1 = ratings_df[['IMDb Rating', 'Runtime (mins)', 'Year', 'Num Votes', 'Day_Rated',
                 'Action', 'Adventure', 'Animation', 'Biography', 'Comedy',
                 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'Game-Show',
                 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Reality-TV',
                 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Thriller', 'War', 'Western',
                 'movie', 'tvMiniSeries', 'tvMovie', 'tvSeries', 'video', 'videoGame']]
-y = ratings_df['Your Rating']
+y_1 = ratings_df['Your Rating']
 
 #? 2) Will have to chose option 2 since the watchlist df that I'm going to making predictions on only includes these features!
 X = ratings_df[['IMDb Rating', 'Runtime (mins)', 'Year', 'Num Votes', 'Day_Rated',]]
@@ -66,7 +66,7 @@ y = ratings_df['Your Rating']
 
 
 
-#? This code is used and explained in the notebook files
+#? Code below here is used and explained in the notebook files ----------------------------
 # Changing runtimes (from exploratory_analysis.ipynb)
 sample_numbers = [4, 10, 58, 247, 828, 883, 932, 980, 983, 1013, 1019, 1020, 1022, 1039, 1052]
 correct_runtimes = [54, 42, 23, 49, 23, 44, 46, 42, 38, 44, 34, 28, 32, 56, 41] # Googled These 
@@ -82,42 +82,3 @@ def valid_int(prompt, min_val, max_val):
                 print(f"Please enter a number between {min_val} and {max_val}.")
         except ValueError:
             print("Invalid input. Please enter a valid number.")
-
-
-
-
-
-
-
-
-#* This stuff is not relevant here but noting for later..
-#? Feature selection methods: Filter, wrapper and embedded
-"""
-Filter 
-- Checks correlation basically before using ...of each variable 
-- Doesn't work well for multivariate relationships since it measures individually
-Yes I should use!
-
-Wrapper:
-- They by using a search algorithm to find which combination of features can optimize performance of a given model..
-- eg. fwd/ backward bidirectional crap and recursive ..
-Yes I should try with top 5!
-
-Embedded:
--Similar to wrapper but don't quite get If I figure out can use..
-
-
-
-
-"""
-
-
-
-
-
-
-
-
-
-
-
