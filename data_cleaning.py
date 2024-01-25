@@ -25,7 +25,6 @@ ratings_df.dropna(inplace=True)
 # print(len(ratings_df)) 
 
 
-
 #! Cleaning My Watchlist CSV file!
 df2 = pd.read_csv("Data/watchlist.csv")
 watchlist_df = df2.drop(["DateAdded", "Type"], axis=1)
