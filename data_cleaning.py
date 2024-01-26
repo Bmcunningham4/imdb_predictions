@@ -3,7 +3,7 @@ import pandas as pd
 
 #! Cleaning, My Ratings CSV file
 df = pd.read_csv("Data/imdb_ratings.csv")
-ratings_df = df.drop(["Const", "URL", "Release Date", "Directors"], axis = 1) #todo: I don't necessarily need to remove title, cause it'll make it harder knowing which movie I'm talking about!
+ratings_df = df.drop(["Const", "URL", "Release Date", "Directors"], axis = 1) 
 
 #? converting out of object type!
 ratings_df[["Genres", "Title Type"]] = ratings_df[["Genres", "Title Type"]].astype("category")
@@ -35,7 +35,6 @@ watchlist_df["Runtime (mins)"] = Runtimes
 
 #? Creating new column Day_Rated and setting it to 3487, which would be the present day of 26/1/24 (To allow the ML model to use this feature for predictions)
 watchlist_df["Day_Rated"] = 3487
-
 
 
 
